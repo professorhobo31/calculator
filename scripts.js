@@ -52,25 +52,25 @@ function operate(number1, number2, operator) {
         return subtract(number1, number2);
     }
     else if (operator == '*') {
-        return multiply(number1, number2);        
+        return multiply(number1, number2);
     }
     else if (operator == '/') {
-        return divide(number1, number2);        
+        return divide(number1, number2);
     }
 }
-operate(2,5,'-')
 
 /**
- * Upon pressing of the "+" button, stores the current upper display button and waits for the second input.
+ * Upon pressing of the "+" button, starts a sum operation
  */
 function sumButtonPressed() {
-    if (display.textContent == undefined) {
-        firstInput = 0;
+    if (display.textContent == '') {
+        display.textContent = '0' + ' ' + '+' + ' ';
     }
     else {
-        firstInput = Number(display.innerText);
-    };
-    console.log(firstInput);
+        let inputArray = display.textContent.split(' ');
+        display.textContent = display.textContent + ' ' + '+' + ' ';
+        console.table(inputArray);
+    }
 }
 
 const sumButton = document.getElementById('+');
