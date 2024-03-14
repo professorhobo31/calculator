@@ -1,6 +1,8 @@
-let firstInput = 0;
-let secondInput = 0;
+let firstInput = 'empty';
+let secondInput = 'empty';
 let operator = 'empty';
+let display = document.getElementById('display');
+
 
 function sum(a, b) {
     return (a + b);
@@ -17,3 +19,12 @@ function multiply(a, b) {
 function divide(a, b) {
     return (a / b)
 };
+
+const numberButtons = document.querySelectorAll('.number');
+numberButtons.forEach(element => {
+    element.addEventListener('click', function () {
+        alert(Number(this.innerText));
+        display.textContent = Number(this.innerText);
+    });
+});
+
