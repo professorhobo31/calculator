@@ -2,6 +2,7 @@ let firstInput = 'empty';
 let secondInput = 'empty';
 let operator = 'empty';
 let display = document.getElementById('display');
+let resultDisplay = document.getElementById('resultDisplay');
 
 
 function sum(a, b) {
@@ -32,7 +33,8 @@ numberButtons.forEach(element => {
  * Clears the upper display zone
  */
 function clearButtonPressed() {
-    display.textContent = undefined;
+    display.textContent = '';
+    resultDisplay.textContent = '0';
 }
 const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', clearButtonPressed);
@@ -70,6 +72,16 @@ function sumButtonPressed() {
         let inputArray = display.textContent.split(' ');
         display.textContent = display.textContent + ' ' + '+' + ' ';
         console.table(inputArray);
+        if (inputArray.length == 3) {
+            display.textContent = '';
+            firstInput = Number(inputArray[0]);
+            secondInput = Number(inputArray[2]);
+            operator = inputArray[1];            
+            resultDisplay.textContent = operate(firstInput, secondInput, operator);
+            firstInput = 'empty';
+            secondInput = 'empty';
+            operator = 'empty';
+        }
     }
 }
 
