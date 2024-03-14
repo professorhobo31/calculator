@@ -23,8 +23,8 @@ function divide(a, b) {
 const numberButtons = document.querySelectorAll('.number');
 numberButtons.forEach(element => {
     element.addEventListener('click', function () {
-        alert(Number(this.innerText));
-        display.textContent = Number(this.innerText);
+        // alert(Number(this.innerText));
+        display.textContent = display.textContent + this.innerText;
     });
 });
 

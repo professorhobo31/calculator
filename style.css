@@ -17,9 +17,19 @@
 #displayContainer {
     height: 140px;
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     justify-content: center;
+    align-items: center;
     /* border: solid 2px blue; */
+}
+
+#resultDisplay {
+    display: flex;
+    align-self: self-end;
+    margin-right: 24px;
+    max-width: 300px;
+    /* border: 2px red solid; */
 }
 
 #display {
@@ -28,7 +38,7 @@
     height: 75px;
     width: 300px;
     position: relative;
-    top: 40px;
+    top: 20px;
 }
 
 #topButtonsContainer {
