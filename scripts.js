@@ -115,6 +115,10 @@ function subtractButtonPressed() {
 const subtractButton = document.getElementById('-');
 subtractButton.addEventListener('click', subtractButtonPressed);
 
+/**
+ * Upon pressing of the "x" button once, it adds a multiply symbol to the display. If there's already a
+ * symbol in the active display, it starts an operation with whatever is on the active display.
+ */
 function multiplyButtonPressed() {
     if (display.textContent == '') {
         display.textContent = '0' + ' ' + '*' + ' ';
@@ -137,6 +141,29 @@ function multiplyButtonPressed() {
 }
 const multiplyButton = document.getElementById('*');
 multiplyButton.addEventListener('click', multiplyButtonPressed);
+
+function divideButtonPressed() {                //remember to add division by zero stuff later
+    if (display.textContent == '') {
+        display.textContent = '0' + ' ' + '/' + ' ';
+    }
+    else {
+        let inputArray = display.textContent.split(' ');
+        display.textContent = display.textContent + ' ' + '/' + ' ';
+        console.table(inputArray);
+        if (inputArray.length == 3) {
+            display.textContent = '';
+            firstInput = Number(inputArray[0]);
+            secondInput = Number(inputArray[2]);
+            operator = inputArray[1];
+            resultDisplay.textContent = operate(firstInput, secondInput, operator);
+            firstInput = 'empty';
+            secondInput = 'empty';
+            operator = 'empty';
+        }
+    }
+}
+const divideButton = document.getElementById('/');
+divideButton.addEventListener('click', divideButtonPressed);
 
 function equalButtonPressed() {
     let inputArray = display.textContent.split(' ');
