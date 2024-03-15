@@ -165,6 +165,10 @@ function divideButtonPressed() {                //remember to add division by ze
 const divideButton = document.getElementById('/');
 divideButton.addEventListener('click', divideButtonPressed);
 
+/**
+ * Upon pressing the equal button, executes the operation written in the active display if and only if there
+ * are two numbers and a symbol on it already.
+ */
 function equalButtonPressed() {
     let inputArray = display.textContent.split(' ');
     if (inputArray.length == 3) {
@@ -181,4 +185,15 @@ function equalButtonPressed() {
 }
 const equalButton = document.getElementById('equal');
 equalButton.addEventListener('click', equalButtonPressed);
+
+function dotButtonPressed() {
+    let inputArray = display.textContent.split(' ');
+    if (inputArray.length == 3 || inputArray.length == 1) {
+        display.textContent = display.textContent + '.';
+    }
+    else { return }
+}
+const dotButton = document.getElementById('.');
+dotButton.addEventListener('click', dotButtonPressed);
+
 
