@@ -40,6 +40,25 @@ const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', clearButtonPressed);
 
 /**
+ * First checks the last character on active display. If the last character there is not a space, it deletes
+ * it. If the last character is a space (implying the last pressed button was an operator symbol), then it
+ * deletes the last 3 characters. 
+ */
+function deleteButtonPressed() {
+    display.textContent.at(-1);
+    console.log(display.textContent.at(-1));
+    if (display.textContent.at(-1) !== ' ') {
+        display.textContent = display.textContent.slice(0, -1);
+    }
+    else if (display.textContent.at(-1) == ' ') {
+        display.textContent = display.textContent.slice(0, -3);
+    }
+}
+const deleteButton = document.getElementById('delete');
+deleteButton.addEventListener('click', deleteButtonPressed);
+
+
+/**
  * takes an operator and 2 numbers and then calls one of the above functions on the numbers
  * @param {*} number1 first input number
  * @param {*} number2 second input number
@@ -195,5 +214,3 @@ function dotButtonPressed() {
 }
 const dotButton = document.getElementById('.');
 dotButton.addEventListener('click', dotButtonPressed);
-
-
