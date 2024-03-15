@@ -62,7 +62,8 @@ function operate(number1, number2, operator) {
 }
 
 /**
- * Upon pressing of the "+" button, starts a sum operation
+ * Upon pressing of the "+" button once, it adds a sum symbol to the display. If there's already a
+ * symbol in the active display, it starts an operation with whatever is on the active display.
  */
 function sumButtonPressed() {
     if (display.textContent == '') {
@@ -76,7 +77,7 @@ function sumButtonPressed() {
             display.textContent = '';
             firstInput = Number(inputArray[0]);
             secondInput = Number(inputArray[2]);
-            operator = inputArray[1];            
+            operator = inputArray[1];
             resultDisplay.textContent = operate(firstInput, secondInput, operator);
             firstInput = 'empty';
             secondInput = 'empty';
@@ -84,6 +85,49 @@ function sumButtonPressed() {
         }
     }
 }
-
 const sumButton = document.getElementById('+');
 sumButton.addEventListener('click', sumButtonPressed);
+
+/**
+ * Upon pressing of the "-" button once, it adds a minus symbol to the display. If there's already a
+ * symbol in the active display, it starts an operation with whatever is on the active display.
+ */
+function subtractButtonPressed() {
+    if (display.textContent == '') {
+        display.textContent = '0' + ' ' + '-' + ' ';
+    }
+    else {
+        let inputArray = display.textContent.split(' ');
+        display.textContent = display.textContent + ' ' + '-' + ' ';
+        console.table(inputArray);
+        if (inputArray.length == 3) {
+            display.textContent = '';
+            firstInput = Number(inputArray[0]);
+            secondInput = Number(inputArray[2]);
+            operator = inputArray[1];
+            resultDisplay.textContent = operate(firstInput, secondInput, operator);
+            firstInput = 'empty';
+            secondInput = 'empty';
+            operator = 'empty';
+        }
+    }
+}
+const subtractButton = document.getElementById('-');
+subtractButton.addEventListener('click', subtractButtonPressed);
+
+function equalButtonPressed() {
+    let inputArray = display.textContent.split(' ');
+    if (inputArray.length == 3) {
+        display.textContent = '';
+        firstInput = Number(inputArray[0]);
+        secondInput = Number(inputArray[2]);
+        operator = inputArray[1];
+        resultDisplay.textContent = operate(firstInput, secondInput, operator);
+        firstInput = 'empty';
+        secondInput = 'empty';
+        operator = 'empty';
+    }
+    else { return }
+}
+const equalButton = document.getElementById('equal');
+equalButton.addEventListener('click', equalButtonPressed);
