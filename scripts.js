@@ -115,6 +115,29 @@ function subtractButtonPressed() {
 const subtractButton = document.getElementById('-');
 subtractButton.addEventListener('click', subtractButtonPressed);
 
+function multiplyButtonPressed() {
+    if (display.textContent == '') {
+        display.textContent = '0' + ' ' + '*' + ' ';
+    }
+    else {
+        let inputArray = display.textContent.split(' ');
+        display.textContent = display.textContent + ' ' + '*' + ' ';
+        console.table(inputArray);
+        if (inputArray.length == 3) {
+            display.textContent = '';
+            firstInput = Number(inputArray[0]);
+            secondInput = Number(inputArray[2]);
+            operator = inputArray[1];
+            resultDisplay.textContent = operate(firstInput, secondInput, operator);
+            firstInput = 'empty';
+            secondInput = 'empty';
+            operator = 'empty';
+        }
+    }
+}
+const multiplyButton = document.getElementById('*');
+multiplyButton.addEventListener('click', multiplyButtonPressed);
+
 function equalButtonPressed() {
     let inputArray = display.textContent.split(' ');
     if (inputArray.length == 3) {
@@ -131,3 +154,4 @@ function equalButtonPressed() {
 }
 const equalButton = document.getElementById('equal');
 equalButton.addEventListener('click', equalButtonPressed);
+
