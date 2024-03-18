@@ -24,8 +24,12 @@ function divide(a, b) {
 const numberButtons = document.querySelectorAll('.number');
 numberButtons.forEach(element => {
     element.addEventListener('click', function () {
-        // alert(Number(this.innerText));
-        display.textContent = display.textContent + this.innerText;
+        if (display.textContent.length > 20) {
+            return
+        }
+        else {
+            display.textContent = display.textContent + this.innerText;
+        }
     });
 });
 
@@ -85,7 +89,14 @@ function operate(number1, number2, operator) {
  * symbol in the active display, it starts an operation with whatever is on the active display.
  */
 function sumButtonPressed() {
-    if (display.textContent == '') {
+    if (display.textContent.length > 20) {
+        return
+    }
+    else if (resultDisplay.textContent !== '0') {
+        display.textContent = resultDisplay.textContent + ' ' + '+' + ' ';
+        resultDisplay.textContent = '0';
+    }
+    else if (display.textContent == '') {
         display.textContent = '0' + ' ' + '+' + ' ';
     }
     else {
@@ -112,7 +123,14 @@ sumButton.addEventListener('click', sumButtonPressed);
  * symbol in the active display, it starts an operation with whatever is on the active display.
  */
 function subtractButtonPressed() {
-    if (display.textContent == '') {
+    if (display.textContent.length > 20) {
+        return
+    }
+    else if (resultDisplay.textContent !== '0') {
+        display.textContent = resultDisplay.textContent + ' ' + '-' + ' ';
+        resultDisplay.textContent = '0';
+    }
+    else if (display.textContent == '') {
         display.textContent = '0' + ' ' + '-' + ' ';
     }
     else {
@@ -139,7 +157,14 @@ subtractButton.addEventListener('click', subtractButtonPressed);
  * symbol in the active display, it starts an operation with whatever is on the active display.
  */
 function multiplyButtonPressed() {
-    if (display.textContent == '') {
+    if (display.textContent.length > 20) {
+        return
+    }
+    else if (resultDisplay.textContent !== '0') {
+        display.textContent = resultDisplay.textContent + ' ' + '*' + ' ';
+        resultDisplay.textContent = '0';
+    }
+    else if (display.textContent == '') {
         display.textContent = '0' + ' ' + '*' + ' ';
     }
     else {
@@ -161,8 +186,15 @@ function multiplyButtonPressed() {
 const multiplyButton = document.getElementById('*');
 multiplyButton.addEventListener('click', multiplyButtonPressed);
 
-function divideButtonPressed() {                //remember to add division by zero stuff later
-    if (display.textContent == '') {
+function divideButtonPressed() {
+    if (display.textContent.length > 20) {
+        return
+    }
+    else if (resultDisplay.textContent !== '0') {
+        display.textContent = resultDisplay.textContent + ' ' + '/' + ' ';
+        resultDisplay.textContent = '0';
+    }
+    else if (display.textContent == '') {
         display.textContent = '0' + ' ' + '/' + ' ';
     }
     else {
