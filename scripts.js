@@ -63,7 +63,7 @@ deleteButton.addEventListener('click', deleteButtonPressed);
 
 
 /**
- * takes an operator and 2 numbers and then calls one of the above functions on the numbers
+ * takes an operator and 2 numbers and then calls one of the above functions on the numbers, returns numbers of length that fit the display. 
  * @param {*} number1 first input number
  * @param {*} number2 second input number
  * @param {*} operator introduced as a string (+-/*) 
@@ -71,16 +71,52 @@ deleteButton.addEventListener('click', deleteButtonPressed);
  */
 function operate(number1, number2, operator) {
     if (operator == '+') {
-        return sum(number1, number2);
+        const result = sum(number1, number2);
+        if (result > 100000000) {
+            return result.toExponential(8);
+        }
+        else if (result % 1 != 0) {
+            return result.toPrecision(8);
+        }
+        else {
+            return result
+        }
     }
     else if (operator == '-') {
-        return subtract(number1, number2);
+        const result = subtract(number1, number2);
+        if (result > 100000000) {
+            return result.toExponential(8);
+        }
+        else if (result % 1 != 0) {
+            return result.toPrecision(8);
+        }
+        else {
+            return result
+        }
     }
     else if (operator == '*') {
-        return multiply(number1, number2);
+        const result = multiply(number1, number2);
+        if (result > 100000000) {
+            return result.toExponential(8);
+        }
+        else if (result % 1 != 0) {
+            return result.toPrecision(8);
+        }
+        else {
+            return result
+        }
     }
     else if (operator == '/') {
-        return divide(number1, number2);
+        const result = divide(number1, number2);
+        if (result > 100000000) {
+            return result.toExponential(8);
+        }
+        else if (result % 1 != 0) {
+            return result.toPrecision(8);
+        }
+        else {
+            return result
+        }
     }
 }
 
@@ -92,7 +128,7 @@ function sumButtonPressed() {
     if (display.textContent.length > 20) {
         return
     }
-    else if (resultDisplay.textContent !== '0') {
+    else if (resultDisplay.textContent !== '0' && display.textContent == '') {       //need to add checks to prevent this behaviour when theres stuff in activedisplay
         display.textContent = resultDisplay.textContent + ' ' + '+' + ' ';
         resultDisplay.textContent = '0';
     }
@@ -126,7 +162,7 @@ function subtractButtonPressed() {
     if (display.textContent.length > 20) {
         return
     }
-    else if (resultDisplay.textContent !== '0') {
+    else if (resultDisplay.textContent !== '0' && display.textContent == '') {
         display.textContent = resultDisplay.textContent + ' ' + '-' + ' ';
         resultDisplay.textContent = '0';
     }
@@ -160,7 +196,7 @@ function multiplyButtonPressed() {
     if (display.textContent.length > 20) {
         return
     }
-    else if (resultDisplay.textContent !== '0') {
+    else if (resultDisplay.textContent !== '0' && display.textContent == '') {
         display.textContent = resultDisplay.textContent + ' ' + '*' + ' ';
         resultDisplay.textContent = '0';
     }
@@ -190,7 +226,7 @@ function divideButtonPressed() {
     if (display.textContent.length > 20) {
         return
     }
-    else if (resultDisplay.textContent !== '0') {
+    else if (resultDisplay.textContent !== '0' && display.textContent == '') {
         display.textContent = resultDisplay.textContent + ' ' + '/' + ' ';
         resultDisplay.textContent = '0';
     }
